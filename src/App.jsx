@@ -284,7 +284,7 @@ export default function App() {
       }}>
         <div style={{ maxWidth: 820, margin: "0 auto" }}>
           <div style={{ fontSize: "0.72rem", letterSpacing: "0.2em", color: "#7FA8C4", marginBottom: "0.4rem", fontFamily: "sans-serif", textTransform: "uppercase" }}>
-            F&G Strategy Ltd · Clinical Assessment Tool
+             Clinical Assessment Tool
           </div>
           <h1 style={{ margin: 0, fontSize: "1.6rem", fontWeight: "normal", letterSpacing: "-0.02em", lineHeight: 1.3 }}>
             LLM Harm Assessment Framework
@@ -587,7 +587,7 @@ export default function App() {
               This framework has not been empirically validated. It is a clinically derived, expert-informed tool that should be used in conjunction with, not in replacement of, standard clinical assessment. The scoring thresholds for the traffic light bands are provisional and should be subject to review as clinical experience accumulates. The framework does not address harms arising from AI use by carers or family members of psychiatric patients, which is a distinct but related risk domain.
             </p>
             <div style={{ marginTop: "1.5rem", borderTop: "1px solid #DDD8D0", paddingTop: "1rem", fontSize: "0.78rem", color: "#888", fontFamily: "sans-serif" }}>
-              Developed by F&G Strategy Ltd · Dr Hellen von Winckler MRCPsych · Version 1.0 · April 2026
+              Developed by Dr Hellen von Winckler MRCPsych · Version 1.0 · April 2026
             </div>
           </div>
         )}
