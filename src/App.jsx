@@ -276,6 +276,7 @@ export default function App() {
       fontFamily: "'Georgia', 'Times New Roman', serif",
       color: "#1A1A1A",
     }}>
+      {/* Header */}
       <div style={{
         background: "#1C2B3A",
         color: "#E8E2D9",
@@ -284,7 +285,7 @@ export default function App() {
       }}>
         <div style={{ maxWidth: 820, margin: "0 auto" }}>
           <div style={{ fontSize: "0.72rem", letterSpacing: "0.2em", color: "#7FA8C4", marginBottom: "0.4rem", fontFamily: "sans-serif", textTransform: "uppercase" }}>
-             Clinical Assessment Tool
+            Clinical Assessment Tool
           </div>
           <h1 style={{ margin: 0, fontSize: "1.6rem", fontWeight: "normal", letterSpacing: "-0.02em", lineHeight: 1.3 }}>
             LLM Harm Assessment Framework
@@ -295,6 +296,7 @@ export default function App() {
         </div>
       </div>
 
+      {/* Tabs */}
       <div style={{ background: "#243344", borderBottom: "1px solid #3A5570" }}>
         <div style={{ maxWidth: 820, margin: "0 auto", display: "flex" }}>
           {[
@@ -326,8 +328,10 @@ export default function App() {
 
       <div style={{ maxWidth: 820, margin: "0 auto", padding: "1.5rem 1rem 3rem" }}>
 
+        {/* ASSESSMENT TAB */}
         {activeTab === "assess" && (
           <>
+            {/* Population context */}
             <div style={{ background: "#fff", border: "1px solid #DDD8D0", borderRadius: 6, padding: "1.2rem", marginBottom: "1.5rem" }}>
               <h2 style={{ margin: "0 0 0.4rem", fontSize: "1rem", fontWeight: "bold", fontFamily: "sans-serif", color: "#1C2B3A" }}>
                 Step 1. Clinical Context (Population Modifiers)
@@ -359,6 +363,7 @@ export default function App() {
               </div>
             </div>
 
+            {/* Domain scoring */}
             <h2 style={{ margin: "0 0 0.8rem", fontSize: "1rem", fontWeight: "bold", fontFamily: "sans-serif", color: "#1C2B3A" }}>
               Step 2. Domain Scores
             </h2>
@@ -390,6 +395,8 @@ export default function App() {
                     <div style={{ fontWeight: "bold", fontSize: "0.9rem", fontFamily: "sans-serif", color: "#1C2B3A" }}>{domain.label}</div>
                     <div style={{ fontSize: "0.75rem", color: "#888", fontFamily: "sans-serif" }}>{domain.description}</div>
                   </div>
+
+                  {/* Score buttons */}
                   <div style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}>
                     {[0, 1, 2, 3].map(val => (
                       <button
@@ -421,18 +428,32 @@ export default function App() {
                         Probing Questions
                       </div>
                       {domain.questions.map((q, i) => (
-                        <div key={i} style={{ display: "flex", gap: "0.6rem", marginBottom: "0.5rem", fontSize: "0.83rem", color: "#333", lineHeight: 1.5 }}>
+                        <div key={i} style={{
+                          display: "flex", gap: "0.6rem",
+                          marginBottom: "0.5rem",
+                          fontSize: "0.83rem",
+                          color: "#333",
+                          lineHeight: 1.5,
+                        }}>
                           <span style={{ color: domain.color, fontFamily: "sans-serif", minWidth: 18, fontWeight: "bold" }}>{i + 1}.</span>
                           <span style={{ fontStyle: "italic" }}>{q}</span>
                         </div>
                       ))}
                     </div>
+
                     <div>
                       <div style={{ fontSize: "0.78rem", fontFamily: "sans-serif", fontWeight: "bold", color: "#555", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
                         Disorder-Specific Vulnerabilities
                       </div>
                       {Object.entries(domain.vulnerabilities).map(([disorder, note]) => (
-                        <div key={disorder} style={{ marginBottom: "0.4rem", padding: "0.5rem 0.7rem", background: "#fff", border: "1px solid #E8E4DF", borderRadius: 4, cursor: "pointer" }}
+                        <div key={disorder} style={{
+                          marginBottom: "0.4rem",
+                          padding: "0.5rem 0.7rem",
+                          background: "#fff",
+                          border: "1px solid #E8E4DF",
+                          borderRadius: 4,
+                          cursor: "pointer",
+                        }}
                           onClick={() => setExpandedVulnerability(expandedVulnerability === domain.id + disorder ? null : domain.id + disorder)}
                         >
                           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -450,7 +471,19 @@ export default function App() {
               </div>
             ))}
 
-            <div style={{ background: "#fff", border: "2px solid #1C2B3A", borderRadius: 6, padding: "1.2rem", marginTop: "1.5rem", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
+            {/* Score display */}
+            <div style={{
+              background: "#fff",
+              border: "2px solid #1C2B3A",
+              borderRadius: 6,
+              padding: "1.2rem",
+              marginTop: "1.5rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "1rem",
+            }}>
               <div>
                 <div style={{ fontSize: "0.75rem", fontFamily: "sans-serif", color: "#888", textTransform: "uppercase", letterSpacing: "0.1em" }}>Raw Domain Score</div>
                 <div style={{ fontSize: "2.5rem", fontWeight: "bold", color: "#1C2B3A", lineHeight: 1 }}>{rawScore}<span style={{ fontSize: "1rem", color: "#999" }}>/24</span></div>
@@ -485,10 +518,28 @@ export default function App() {
               </button>
             </div>
 
+            {/* Results */}
             {showResults && allScored && (
-              <div style={{ marginTop: "1.5rem", background: currentLevel.bg, border: `2px solid ${currentLevel.border}`, borderRadius: 8, padding: "1.5rem" }}>
+              <div style={{
+                marginTop: "1.5rem",
+                background: currentLevel.bg,
+                border: `2px solid ${currentLevel.border}`,
+                borderRadius: 8,
+                padding: "1.5rem",
+              }}>
                 <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem", marginBottom: "1rem" }}>
-                  <div style={{ background: currentLevel.color, color: "#fff", borderRadius: 6, padding: "0.5rem 1rem", fontFamily: "sans-serif", fontWeight: "bold", fontSize: "1.2rem", letterSpacing: "0.1em", minWidth: 90, textAlign: "center" }}>
+                  <div style={{
+                    background: currentLevel.color,
+                    color: "#fff",
+                    borderRadius: 6,
+                    padding: "0.5rem 1rem",
+                    fontFamily: "sans-serif",
+                    fontWeight: "bold",
+                    fontSize: "1.2rem",
+                    letterSpacing: "0.1em",
+                    minWidth: 90,
+                    textAlign: "center",
+                  }}>
                     {currentLevel.label}
                   </div>
                   <div>
@@ -498,44 +549,88 @@ export default function App() {
                     </div>
                   </div>
                 </div>
+
                 <div style={{ marginBottom: "0.5rem", fontSize: "0.78rem", fontFamily: "sans-serif", fontWeight: "bold", color: "#555", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                   Recommended Actions
                 </div>
                 {currentLevel.actions.map((action, i) => (
-                  <div key={i} style={{ display: "flex", gap: "0.6rem", marginBottom: "0.5rem", fontSize: "0.85rem", color: "#333", lineHeight: 1.5 }}>
+                  <div key={i} style={{
+                    display: "flex", gap: "0.6rem",
+                    marginBottom: "0.5rem",
+                    fontSize: "0.85rem",
+                    color: "#333",
+                    lineHeight: 1.5,
+                  }}>
                     <span style={{ color: currentLevel.color, minWidth: 20, fontWeight: "bold", fontFamily: "sans-serif" }}>→</span>
                     <span>{action}</span>
                   </div>
                 ))}
+
+                {/* Domain summary */}
                 <div style={{ marginTop: "1rem", borderTop: "1px solid " + currentLevel.border + "60", paddingTop: "1rem" }}>
                   <div style={{ fontSize: "0.78rem", fontFamily: "sans-serif", fontWeight: "bold", color: "#555", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.6rem" }}>
                     Domain Profile
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
                     {DOMAINS.map(d => (
-                      <div key={d.id} style={{ display: "flex", alignItems: "center", gap: "0.3rem", padding: "0.25rem 0.6rem", background: scores[d.id] > 0 ? d.color + "20" : "#F0EDEA", border: `1px solid ${scores[d.id] > 0 ? d.color : "#DDD"}`, borderRadius: 20, fontSize: "0.75rem", fontFamily: "sans-serif", color: scores[d.id] > 0 ? d.color : "#999", fontWeight: scores[d.id] > 1 ? "bold" : "normal" }}>
+                      <div key={d.id} style={{
+                        display: "flex", alignItems: "center", gap: "0.3rem",
+                        padding: "0.25rem 0.6rem",
+                        background: scores[d.id] > 0 ? d.color + "20" : "#F0EDEA",
+                        border: `1px solid ${scores[d.id] > 0 ? d.color : "#DDD"}`,
+                        borderRadius: 20,
+                        fontSize: "0.75rem",
+                        fontFamily: "sans-serif",
+                        color: scores[d.id] > 0 ? d.color : "#999",
+                        fontWeight: scores[d.id] > 1 ? "bold" : "normal",
+                      }}>
                         {d.icon} {d.label}: <strong>{scores[d.id]}</strong>
                       </div>
                     ))}
                   </div>
                 </div>
-                <button onClick={resetAll} style={{ marginTop: "1rem", background: "none", border: `1px solid ${currentLevel.border}`, color: currentLevel.color, borderRadius: 4, padding: "0.4rem 0.9rem", fontSize: "0.8rem", fontFamily: "sans-serif", cursor: "pointer" }}>
-                  Reset assessment
-                </button>
+
+                <button onClick={resetAll} style={{
+                  marginTop: "1rem",
+                  background: "none",
+                  border: `1px solid ${currentLevel.border}`,
+                  color: currentLevel.color,
+                  borderRadius: 4,
+                  padding: "0.4rem 0.9rem",
+                  fontSize: "0.8rem",
+                  fontFamily: "sans-serif",
+                  cursor: "pointer",
+                }}>Reset assessment</button>
               </div>
             )}
           </>
         )}
 
+        {/* GUIDE TAB */}
         {activeTab === "guide" && (
           <div>
             <h2 style={{ fontSize: "1.1rem", fontFamily: "sans-serif", fontWeight: "bold", color: "#1C2B3A", marginBottom: "1rem" }}>
               Traffic Light System: At a Glance
             </h2>
             {SCORE_LEVELS.map(level => (
-              <div key={level.label} style={{ background: level.bg, border: `2px solid ${level.border}`, borderRadius: 8, padding: "1.2rem", marginBottom: "1rem" }}>
+              <div key={level.label} style={{
+                background: level.bg,
+                border: `2px solid ${level.border}`,
+                borderRadius: 8,
+                padding: "1.2rem",
+                marginBottom: "1rem",
+              }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "0.8rem" }}>
-                  <div style={{ background: level.color, color: "#fff", borderRadius: 4, padding: "0.3rem 0.8rem", fontFamily: "sans-serif", fontWeight: "bold", fontSize: "0.9rem", letterSpacing: "0.1em" }}>
+                  <div style={{
+                    background: level.color,
+                    color: "#fff",
+                    borderRadius: 4,
+                    padding: "0.3rem 0.8rem",
+                    fontFamily: "sans-serif",
+                    fontWeight: "bold",
+                    fontSize: "0.9rem",
+                    letterSpacing: "0.1em",
+                  }}>
                     {level.label}
                   </div>
                   <div>
@@ -551,6 +646,7 @@ export default function App() {
                 ))}
               </div>
             ))}
+
             <div style={{ background: "#F0EDE8", border: "1px solid #DDD8D0", borderRadius: 6, padding: "1rem", marginTop: "1rem" }}>
               <div style={{ fontSize: "0.78rem", fontFamily: "sans-serif", fontWeight: "bold", color: "#555", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
                 Scoring Note
@@ -562,6 +658,7 @@ export default function App() {
           </div>
         )}
 
+        {/* ABOUT TAB */}
         {activeTab === "about" && (
           <div style={{ fontSize: "0.88rem", lineHeight: 1.8, color: "#333" }}>
             <h2 style={{ fontFamily: "sans-serif", fontSize: "1.1rem", color: "#1C2B3A" }}>Framework Rationale</h2>
@@ -571,10 +668,12 @@ export default function App() {
             <p>
               The framework operates at the intersection of three established clinical domains: digital health risk assessment, psychiatric vulnerability profiling, and behavioural harm analysis. It is not a diagnostic instrument. It is a structured clinical aide-mémoire and risk stratification guide.
             </p>
+
             <h3 style={{ fontFamily: "sans-serif", fontSize: "0.95rem", color: "#1C2B3A" }}>Domain Selection Rationale</h3>
             <p>
               The eight domains were selected to cover the principal mechanisms by which LLM interaction can cause or worsen harm in psychiatric populations. They are not exhaustive. They represent the categories for which there is either existing literature on technology-mediated harm analogues (e.g. internet use and social withdrawal, online reassurance-seeking in OCD) or credible mechanistic pathways specific to LLM interaction (e.g. delusional recruitment of AI content, AI as crisis substitute).
             </p>
+
             <h3 style={{ fontFamily: "sans-serif", fontSize: "0.95rem", color: "#1C2B3A" }}>Scoring Philosophy</h3>
             <p>
               Scores are assigned by the clinician on the basis of their clinical interview, supplemented by the probing questions provided. The four-point scale (0 to 3) reflects clinical convention in risk tools: the absence of concern, mild or uncertain presence, moderate or probable presence, and definite or severe presence. A score of 1 should not be dismissed; it is a signal that further enquiry is warranted.
@@ -582,26 +681,21 @@ export default function App() {
             <p>
               The population modifier is not punitive. It reflects the empirical reality that the same pattern of LLM use carries a different risk profile depending on the clinical context. A patient with active paranoid schizophrenia who is using an AI to discuss their beliefs is in a fundamentally different risk category than an anxious but non-psychotic adult doing the same.
             </p>
+
             <h3 style={{ fontFamily: "sans-serif", fontSize: "0.95rem", color: "#1C2B3A" }}>Limitations</h3>
             <p>
               This framework has not been empirically validated. It is a clinically derived, expert-informed tool that should be used in conjunction with, not in replacement of, standard clinical assessment. The scoring thresholds for the traffic light bands are provisional and should be subject to review as clinical experience accumulates. The framework does not address harms arising from AI use by carers or family members of psychiatric patients, which is a distinct but related risk domain.
             </p>
-           <div style={{ marginTop: "1.5rem", borderTop: "1px solid #DDD8D0", paddingTop: "1rem", fontSize: "0.78rem", color: "#888", fontFamily: "sans-serif" }}>
-            <div style={{ marginBottom: "0.5rem" }}>
-              Dr Hellen von Winckler MRCPsych · Version 1.0 · April 2026
-            </div>
-            <div style={{ marginBottom: "0.5rem", color: "#555" }}>
-              This tool is free to use. It is not empirically validated and does not constitute clinical advice. It is intended to supplement, not replace, clinical judgement.
-            </div>
-            <div style={{ marginBottom: "0.5rem", color: "#555" }}>
-              Collaboration and feedback welcome. If you are a clinician, researcher, or organisation interested in contributing to the development and validation of this framework, please get in touch.
-            </div>
-            <div>
-              <a href="mailto:hw@fgstrategy.co.uk" style={{ color: "#4A7FA5", textDecoration: "none" }}>hw@fgstrategy.co.uk</a>
+
+            <div style={{ marginTop: "1.5rem", borderTop: "1px solid #DDD8D0", paddingTop: "1rem", fontSize: "0.78rem", color: "#888", fontFamily: "sans-serif" }}>
+              <div style={{ marginBottom: "0.5rem" }}>Dr Hellen von Winckler MRCPsych · Version 1.0 · April 2026</div>
+              <div style={{ marginBottom: "0.5rem", color: "#555" }}>This tool is free to use. It is not empirically validated and does not constitute clinical advice. It is intended to supplement, not replace, clinical judgement.</div>
+              <div style={{ marginBottom: "0.5rem", color: "#555" }}>Collaboration and feedback welcome. If you are a clinician, researcher, or organisation interested in contributing to the development and validation of this framework, please get in touch.</div>
+              <div><a href="mailto:hw@fgstrategy.co.uk" style={{ color: "#4A7FA5", textDecoration: "none" }}>hw@fgstrategy.co.uk</a></div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
