@@ -587,11 +587,17 @@ export default function App() {
               This framework has not been empirically validated. It is a clinically derived, expert-informed tool that should be used in conjunction with, not in replacement of, standard clinical assessment. The scoring thresholds for the traffic light bands are provisional and should be subject to review as clinical experience accumulates. The framework does not address harms arising from AI use by carers or family members of psychiatric patients, which is a distinct but related risk domain.
             </p>
             <div style={{ marginTop: "1.5rem", borderTop: "1px solid #DDD8D0", paddingTop: "1rem", fontSize: "0.78rem", color: "#888", fontFamily: "sans-serif" }}>
-              Developed by Dr Hellen von Winckler MRCPsych · Version 1.0 · April 2026
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
+              Developed by <div style={{ marginTop: "1.5rem", borderTop: "1px solid #DDD8D0", paddingTop: "1rem", fontSize: "0.78rem", color: "#888", fontFamily: "sans-serif" }}>
+                <div style={{ marginBottom: "0.5rem" }}>
+                  Dr Hellen von Winckler MRCPsych · Version 1.0 · April 2026
+                </div>
+                <div style={{ marginBottom: "0.5rem", color: "#555" }}>
+                  This tool is free to use.
+                </div>
+                <div style={{ marginBottom: "0.5rem", color: "#555" }}>
+                  Collaboration and feedback welcome. If you are a clinician, researcher, or organisation interested in contributing to the development and validation of this framework, please get in touch.
+                </div>
+                <div>
+                  <a href="mailto:hw@fgstrategy.co.uk" style={{ color: "#4A7FA5", textDecoration: "none" }}>hw@fgstrategy.co.uk</a>
+                </div>
+              </div>
