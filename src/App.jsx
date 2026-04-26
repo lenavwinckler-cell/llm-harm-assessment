@@ -684,7 +684,7 @@ export default function App() {
 
             <h3 style={{ fontFamily: "sans-serif", fontSize: "0.95rem", color: "#1C2B3A" }}>Limitations</h3>
             <p>
-              This framework has not been empirically validated. It is a clinically derived, expert-informed tool that should be used in conjunction with, not in replacement of, standard clinical assessment. The scoring thresholds for the traffic light bands are provisional and should be subject to review as clinical experience accumulates. The framework does not address harms arising from AI use by carers or family members of psychiatric patients, which is a distinct but related risk domain.
+              This framework has not been empirically validated. It is a clinically derived, expert-informed tool that should be used in conjunction with, not in replacement of, standard clinical assessment. The scoring thresholds for the traffic light bands are provisional and should be subject to review as clinical experience accumulates. The framework does not address harms arising from AI use by carers or family members of psychiatric patients, which is a distinct but related risk domain. It is intended for use by qualified mental health professionals as a structured supplement to, not a replacement for, standard clinical assessment and risk formulation. Scores produced by this framework should be interpreted in the context of the full clinical picture. The author accepts no liability for clinical decisions made on the basis of framework scores alone
             </p>
 
             <div style={{ marginTop: "1.5rem", borderTop: "1px solid #DDD8D0", paddingTop: "1rem", fontSize: "0.78rem", color: "#888", fontFamily: "sans-serif" }}>
